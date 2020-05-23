@@ -28,7 +28,7 @@ namespace ItlaMarket
 						MenuVentas.ShowMenu();
 						break;
 					default:
-						Console.ForegroundColor = ConsoleColor.Cyan;
+						Console.ForegroundColor = ConsoleColor.Red;
 						Console.WriteLine("Error! opcion invalida");
 						Console.ReadKey();
 						ShowMenu();
@@ -37,7 +37,7 @@ namespace ItlaMarket
 			}
 			catch (Exception)
 			{
-				Console.ForegroundColor = ConsoleColor.Cyan;
+				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("Error! opcion invalida");
 				Console.ReadKey();
 				ShowMenu();

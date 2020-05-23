@@ -4,7 +4,26 @@ using System.Text;
 
 namespace ItlaMarket
 {
-	class ManageSales
+	public class ManageSales : ICrud
 	{
+		public void Crear()
+		{
+
+		}
+
+		public void Listar()
+		{
+
+		}
+
+		public void Editar()
+		{
+
+		}
+
+		public void Eliminar()
+		{
+
+		}
 	}
 }

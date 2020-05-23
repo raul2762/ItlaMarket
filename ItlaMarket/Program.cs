@@ -6,7 +6,7 @@ namespace ItlaMarket
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			MenuPrincipal.ShowMenu();
 		}
 	}
 }
