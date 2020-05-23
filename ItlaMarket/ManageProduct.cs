@@ -115,16 +115,16 @@ namespace ItlaMarket
 				catch (Exception ex)
 				{
 					Console.ForegroundColor = ConsoleColor.Red;
-					Console.Write("Error! {0}", ex.Message);
+					Console.WriteLine("Error! {0}", ex.Message);
 					Console.ReadKey();
-					MenuProductos.ShowMenu();
+					Listar();
 				}
 				
 			}
 			else
 			{
 				Console.ForegroundColor = ConsoleColor.Yellow;
-				Console.Write("**Producto no encontrado**");
+				Console.WriteLine("**Producto no encontrado**");
 				Console.ReadKey();
 				MenuProductos.ShowMenu();
 			}
@@ -132,7 +132,51 @@ namespace ItlaMarket
 
 		public void Eliminar()
 		{
+			Console.Clear();
+			Console.ForegroundColor = ConsoleColor.White;
+			Console.WriteLine("Para eliminar un producto comience escribiendo el nombre");
+			Console.ForegroundColor = ConsoleColor.Cyan;
+			Console.Write("Nombre de producto: ");
+			string nombreProd = Console.ReadLine();
 
+			var result = productoLista.FirstOrDefault(p => p.Nombre == nombreProd);
+			int index = productoLista.IndexOf(result);
+
+			if (result != null)
+			{
+				try
+				{
+					Console.ForegroundColor = ConsoleColor.Yellow;
+					Console.WriteLine("***Nombre: {0} Cantidad: {1} Precios: {2}***", result.Nombre, result.Cantidad, result.Precio);
+					Console.ForegroundColor = ConsoleColor.Cyan;
+					Console.Write("Seguro que desea eliminar este articulo 1-Si 2-No: ");
+					int opcion = Convert.ToInt32(Console.ReadLine());
+					switch (opcion)
+					{
+						case 1:
+							productoLista.RemoveAt(index);
+							Listar();
+							break;
+						case 2:
+							Listar();
+							break;
+						default:
+							Console.ForegroundColor = ConsoleColor.Red;
+							Console.WriteLine("Error! opcion invalida");
+							Console.ReadKey();
+							Eliminar();
+							break;
+					}
+				}
+				catch (Exception ex)
+				{
+					Console.ForegroundColor = ConsoleColor.Red;
+					Console.WriteLine("Error! {0}", ex.Message);
+					Console.ReadKey();
+					Eliminar();
+				}
+				
+			}
 		}
 	}
 }

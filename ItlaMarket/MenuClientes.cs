@@ -8,13 +8,14 @@ namespace ItlaMarket
 	{
 		public static void ShowMenu()
 		{
-			ICrud manageClient = new ManageClient();
+			ICrud manageClient = ManageClient.Instancia;
 			Console.Clear();
 			try
 			{
-				
+				Console.ForegroundColor = ConsoleColor.White;
+				Console.WriteLine("Menu de Clientes");
 				Console.ForegroundColor = ConsoleColor.Cyan;
-				Console.WriteLine("1 - Crear \n2 - Listar \n3 - Editar \n4 - Eliminar");
+				Console.WriteLine("1 - Crear \n2 - Listar \n3 - Editar \n4 - Eliminar \n5- Menu Principal");
 				Console.Write("Digite una opcion: ");
 				int opcion = Convert.ToInt32(Console.ReadLine());
 
@@ -31,6 +32,9 @@ namespace ItlaMarket
 						break;
 					case 4:
 						manageClient.Eliminar();
+						break;
+					case 5:
+						MenuPrincipal.ShowMenu();
 						break;
 					default:
 						Console.ForegroundColor = ConsoleColor.Red;

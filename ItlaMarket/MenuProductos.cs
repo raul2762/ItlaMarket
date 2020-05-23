@@ -13,6 +13,8 @@ namespace ItlaMarket
 			Console.Clear();
 			try
 			{
+				Console.ForegroundColor = ConsoleColor.White;
+				Console.WriteLine("Menu de Productos");
 				Console.ForegroundColor = ConsoleColor.Cyan;
 				Console.WriteLine("1 - Crear \n2 - Listar \n3 - Editar \n4 - Eliminar \n5 - Menu Principal");
 				Console.Write("Digite una opcion: ");

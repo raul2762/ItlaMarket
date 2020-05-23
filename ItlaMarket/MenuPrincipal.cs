@@ -12,7 +12,7 @@ namespace ItlaMarket
 			try
 			{
 				Console.ForegroundColor = ConsoleColor.Cyan;
-				Console.WriteLine("1 - Clientes \n2 - Productos \n3 - Ventas");
+				Console.WriteLine("1 - Clientes \n2 - Productos \n3 - Ventas \n4 - Salir");
 				Console.Write("Digite una opcion: ");
 				int opcion = Convert.ToInt32(Console.ReadLine());
 
@@ -26,6 +26,9 @@ namespace ItlaMarket
 						break;
 					case 3:
 						MenuVentas.ShowMenu();
+						break;
+					case 4:
+						Environment.Exit(0);
 						break;
 					default:
 						Console.ForegroundColor = ConsoleColor.Red;
