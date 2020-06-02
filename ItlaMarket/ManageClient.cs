@@ -105,7 +105,7 @@ namespace ItlaMarket
 			{
 				try
 				{
-					Console.WriteLine("Cliente: Nombre: {0} ", result.Nombre);
+					Console.WriteLine("Cliente: {0} ", result.Nombre);
 					Console.Write("Nombre: ");
 					clienteLista[index].Nombre = Console.ReadLine();
 					Console.ForegroundColor = ConsoleColor.Green;
@@ -177,6 +177,27 @@ namespace ItlaMarket
 					Eliminar();
 				}
 
+			}
+			else
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Error! cliente no encontrado");
+				Console.ReadKey();
+				Eliminar();
+			}
+		}
+
+		public bool ConsultaCliente(string nombreCliente)
+		{
+			var result = clienteLista.FirstOrDefault(p => p.Nombre == nombreCliente);
+
+			if (result != null)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
 			}
 		}
 	}

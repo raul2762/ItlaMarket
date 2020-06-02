@@ -8,7 +8,7 @@ namespace ItlaMarket
 	public class ManageProduct : ICrud
 	{
 		private static ManageProduct _instancia = null;
-		
+
 		List<Producto> productoLista = new List<Producto>();
 
 		public static ManageProduct Instancia
@@ -65,7 +65,7 @@ namespace ItlaMarket
 				Console.ReadKey();
 				Crear();
 			}
-			
+
 		}
 
 		public void Listar()
@@ -119,7 +119,7 @@ namespace ItlaMarket
 					Console.ReadKey();
 					Listar();
 				}
-				
+
 			}
 			else
 			{
@@ -175,8 +175,38 @@ namespace ItlaMarket
 					Console.ReadKey();
 					Eliminar();
 				}
-				
+
 			}
+		}
+
+		public T ConsultaProducto<T>(string nombreProducto, string tipoConsulta = "Nombre")
+		{
+			Console.Clear();
+			if (tipoConsulta.ToLower() == "nombre")
+			{
+				var result = productoLista.FirstOrDefault(p => p.Nombre == nombreProducto);
+				if (result != null)
+				{
+					return (T)(object)true;
+				}
+				else
+				{
+					Console.ForegroundColor = ConsoleColor.Yellow;
+					Console.WriteLine("**Producto no encontrado**");
+					Console.ReadKey();
+					ConsultaProducto<T>(nombreProducto, tipoConsulta);
+				}
+			}
+			else if (tipoConsulta.ToLower() == "cantidad")
+			{
+				var result = productoLista.FirstOrDefault(p => p.Nombre == nombreProducto);
+				if (result != null)
+				{
+					return (T)(object)result.Cantidad;
+				}
+			}
+
+			return (T)(object)false;
 		}
 	}
 }
