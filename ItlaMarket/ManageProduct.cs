@@ -181,30 +181,41 @@ namespace ItlaMarket
 
 		public T ConsultaProducto<T>(string nombreProducto, string tipoConsulta = "Nombre")
 		{
-			Console.Clear();
-			if (tipoConsulta.ToLower() == "nombre")
+			switch (tipoConsulta.ToLower())
 			{
-				var result = productoLista.FirstOrDefault(p => p.Nombre == nombreProducto);
-				if (result != null)
-				{
-					return (T)(object)true;
-				}
-				else
-				{
-					Console.ForegroundColor = ConsoleColor.Yellow;
-					Console.WriteLine("**Producto no encontrado**");
-					Console.ReadKey();
-					ConsultaProducto<T>(nombreProducto, tipoConsulta);
-				}
+				case "nombre":
+					var result = productoLista.FirstOrDefault(p => p.Nombre == nombreProducto);
+					if (result != null)
+					{
+						return (T)(object)true;
+					}
+					else
+					{
+						Console.ForegroundColor = ConsoleColor.Yellow;
+						Console.WriteLine("**Producto no encontrado**");
+						Console.ReadKey();
+						//ConsultaProducto<T>(nombreProducto, tipoConsulta);
+						MenuVentas.ShowMenu();
+					}
+					break;
+				case "cantidad":
+					var result2 = productoLista.FirstOrDefault(p => p.Nombre == nombreProducto);
+					if (result2 != null)
+					{
+						return (T)(object)result2.Cantidad;
+					}
+					break;
+				case "precio":
+					var result3 = productoLista.FirstOrDefault(p => p.Nombre == nombreProducto);
+					if (result3 != null)
+					{
+						return (T)(object)result3.Precio;
+					}
+					break;
+				default:
+					break;
 			}
-			else if (tipoConsulta.ToLower() == "cantidad")
-			{
-				var result = productoLista.FirstOrDefault(p => p.Nombre == nombreProducto);
-				if (result != null)
-				{
-					return (T)(object)result.Cantidad;
-				}
-			}
+
 
 			return (T)(object)false;
 		}

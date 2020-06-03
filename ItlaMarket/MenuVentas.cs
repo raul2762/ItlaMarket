@@ -12,7 +12,7 @@ namespace ItlaMarket
 			Console.Clear();
 			try
 			{
-				ICrud manageSales = ManageSales.Instancia;
+				ManageSales manageSales = ManageSales.Instancia;
 				Console.ForegroundColor = ConsoleColor.Cyan;
 				Console.WriteLine("1 - Realizar venta \n2 - Historial de ventas");
 				Console.Write("Digite una opcion: ");
@@ -24,7 +24,7 @@ namespace ItlaMarket
 						manageSales.Crear();
 						break;
 					case 2:
-						manageSales.Listar();
+						manageSales.showSales();
 						break;
 					default:
 						Console.ForegroundColor = ConsoleColor.Red;
